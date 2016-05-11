@@ -36,6 +36,7 @@ class phpmyadmin::config inherits phpmyadmin {
 		ensure  => present,
 		mode    => "0644",
 		content => template("phpmyadmin/apache.conf.erb"),
+		require => Class["apache"],
 	} ->
 
 	file { "phpmyadmin-apache-alias-link":
