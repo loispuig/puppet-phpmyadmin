@@ -18,4 +18,5 @@ class phpmyadmin::params {
 	$pma_controlpass 	= fqdn_rand_string(10)
 	$pma_uploaddir		= ''
 	$pma_savedir		= ''
+	$pma_lang			= 'en'
 }
