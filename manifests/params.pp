@@ -1,0 +1,21 @@
+class phpmyadmin::params {
+	$pma_alias			= '/phpmyadmin'
+	$pma_path			= '/usr/share/phpmyadmin'
+	$pma_owner			= 'root'
+	$pma_group			= 'root'
+	$pma_blowfish		= fqdn_rand_string(30)
+	$pma_verbose 		= 'localhost'
+	$mysql_host			= 'localhost'
+	$mysql_connect		= 'socket'
+	$mysql_port			= ''
+	$mysql_socket		= '/var/run/mysqld/mysqld.sock'
+	$pma_ssl			= true
+	$pma_auth 			= 'config'
+	$pma_mysql_user		= 'root'
+	$pma_mysql_password	= 'root'
+	$pma_db				= 'phpmyadmin'
+	$pma_controluser 	= 'pma'
+	$pma_controlpass 	= fqdn_rand_string(10)
+	$pma_uploaddir		= ''
+	$pma_savedir		= ''
+}
