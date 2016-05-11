@@ -19,6 +19,7 @@ Setup phpMyAdmin on Apache web server :
 
 * Puppet module : puppetlabs/stdlib >= 4.12.0 < 5.0.0
 * Puppet module : puppetlabs/mysql >= 3.7.0 < 4.0.0
+* Puppet module : puppetlabs/apache >= 1.9.0
 
 ## Usage
 
@@ -54,6 +55,5 @@ class { 'phpmyadmin':
 
 ## Limitations
 
-Tested on Debian 8 using Puppet 3.7 / 3.8. 
-Should work on any Apache base web server.  
+Tested on Debian 8 using Puppet 3.7 / 3.8.   
 Puppet >= 3.7 required.
