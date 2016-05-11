@@ -9,23 +9,51 @@
 
 ## Overview
 
-Sets phpmyadmin on Debian based OS :
+Setup phpMyAdmin on Apache web server :
 
-* Clone master branch of phpmyadmin's Github repository
+* Download and extract last phpMyAdmin stable release from official web site
+* Create phpMyAdmin database from sql script contained in downloaded release
+* Setup config.inc.php from given parameters
+
+## Required dependencies
+
+* Puppet module : puppetlabs/stdlib >= 4.12.0 < 5.0.0
+* Puppet module : puppetlabs/mysql >= 3.7.0 < 4.0.0
 
 ## Usage
 
 ```
-include phpmyadmin
+class { 'phpmyadmin':
+	$pma_alias			=> '/phpmyadmin',
+	pma_path			=> '/var/www/phpmyadmin',
+	pma_owner			=> 'www-data',
+	pma_group			=> 'www-data',
+	pma_blowfish		=> '9HvXD9Ajv>5V7B633*n4',
+	pma_verbose 		=> 'localhost',
+	mysql_host			=> 'localhost',
+	mysql_connect		=> 'socket',
+	mysql_port			=> '',
+	mysql_socket		=> '/var/run/mysqld/mysqld.sock',
+	pma_ssl				=> true,
+	pma_auth 			=> 'config',
+	pma_mysql_user		=> 'root',
+	pma_mysql_password	=> 'root',
+	pma_db				=> 'phpmyadmin',
+	pma_controluser 	=> 'pma',
+	pma_controlpass 	=> 'pmapass',
+	$pma_uploaddir		=> '',
+	$pma_savedir		=> '',
+}
 ```
 
 ## Reference
 
-* manifests/init.pp : Initiates the module, includes parameters and starts the package and config scripts.
-* manifests/package.pp : Installs required packages.
+* manifests/init.pp : Initiate the module, includes parameters and starts scripts.
+* manifests/package.pp : Download and extract last stable release.
+* manifests/config.pp : Create phpMyAdmin database and setup config.inc.php.
 
 ## Limitations
 
-Tested on Debian 8 using Puppet 3.7.  
-Should work on any Debian and Ubuntu based OS.  
-Puppet >= 3.3 required.
+Tested on Debian 8 using Puppet 3.7 / 3.8. 
+Should work on any Apache base web server.  
+Puppet >= 3.7 required.
